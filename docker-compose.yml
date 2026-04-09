@@ -1,0 +1,7 @@
+services:
+  ai_app:
+    build: .
+    volumes:
+      - .:/app
+    env_file:
+      - .env
