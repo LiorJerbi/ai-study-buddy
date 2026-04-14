@@ -5,3 +5,6 @@ services:
       - .:/app
     env_file:
       - .env
+    # השורות החדשות שפותרות את השגיאה:
+    stdin_open: true
+    tty: true

@@ -1,13 +1,12 @@
 FROM python:3.12-slim
-
 WORKDIR /app
 
-# התקנת כלים של המערכת שדרושים לספריות מסוימות
-RUN apt-get update && apt-get install -y build-essential curl && rm -rf /var/lib/apt/lists/*
-
+# מעתיקים את הקבצים מהשורש של הפרויקט לתוך ה-Container
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# אנחנו מעתיקים את כל התוכן (כולל תיקיית src ו-data)
 COPY . .
 
-CMD ["python", "main.py"]
+# מעדכנים את נתיב ההרצה לתוך תיקיית src
+CMD ["python", "src/main.py"]
